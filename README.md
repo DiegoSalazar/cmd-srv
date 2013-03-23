@@ -1,24 +1,28 @@
 # Cmd::Srv
 
-TODO: Write a gem description
+A command line utility to quickly server static files from the current directory.
+
+## Why
+
+I needed a quick way to see html files (site templates, designs, wireframes, etc.) without having to start up a Apache or something. 
+Why not just open the file in directly in the browser you say? Sometimes stylesheet links and scripts use a relative or other path 
+that the browser can't find when opened this way. With ```cmd_srv``` I can quickly serve up the current directory as if it were the 
+document root.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem 'cmd-srv'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install cmd-srv
+    $ [sudo] gem install cmd-srv
 
 ## Usage
 
-TODO: Write usage instructions here
+```cd``` into a directory with an index.html file and fire off the cmd: ```cmd_srv``` and das iiit! A browser window will automatically open.
+
+## Todos
+
+* Support passing in a directory to server.
+* Auto directory listing when index file missing.
+* Write applescript to add server and shortcut key to start the server in current Finder window.
+* Interpret php files.
 
 ## Contributing
 
