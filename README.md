@@ -15,10 +15,14 @@ document root.
 
 ## Usage
 
-```cd``` into a directory with an index.html file and fire off the cmd: ```cmd_srv``` and das iiit! A browser window will automatically open.
+    $ cd into/dir/with/an/index.html
+    $ cmd_srv
+
+Das iiit! A browser window will automatically open. You can optional pass in arguments to ```cmd_srv <bind> <port>``` where _bind_ is the IP or hostname to bind to and port is... well... the port.
 
 ## Todos
 
+* Fix the rescue blocks so cmd_srv gracefully shuts down.
 * Support passing in a path to serve.
 * Auto directory listing when index file missing.
 * Write applescript to add shortcut key to ```cmd_srv``` in current Finder window.
