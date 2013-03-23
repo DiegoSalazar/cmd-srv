@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+lib = File.expand_path '../../lib', __FILE__
+$LOAD_PATH.unshift lib unless $LOAD_PATH.include? lib
+
+require 'cmd-srv'
+bind, port = ARGV[0] || '127.0.0.1', ARGV[1] || 7335
+
+t = Thread.new do
+  srv = CmdSrv::Srv.new bind, port
+  srv.start
+end
+
+page = "http://#{bind}:#{port}"
+puts "opening #{page}"
+system "open '#{page}'"
+
+t.join
