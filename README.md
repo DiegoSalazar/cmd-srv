@@ -19,10 +19,10 @@ document root.
 
 ## Todos
 
-* Support passing in a directory to server.
+* Support passing in a path to serve.
 * Auto directory listing when index file missing.
-* Write applescript to add server and shortcut key to start the server in current Finder window.
-* Interpret php files.
+* Write applescript to add shortcut key to ```cmd_srv``` in current Finder window.
+* Interpret php files cuz why not.
 
 ## Contributing
 
