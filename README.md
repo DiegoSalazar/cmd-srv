@@ -11,7 +11,7 @@ document root.
 
 ## What is it?
 
-A tiny little http server! Isn't that the cutest?! 
+A tiny little http server! Isn't that the cutest?! It uses TCPServer to handle requests, MimeMagic for correct content-types in responses, and a tiny html builder for directory listings.
 
 ## Installation
 
@@ -27,12 +27,10 @@ Das iiit! A browser window will automatically open. You can optionaly pass in ar
 
 ## Todos
 
-* Fix the rescue blocks so cmd_srv gracefully shuts down.
-* Support passing in a path to serve.
-* Auto directory listing when index file missing.
-* Write applescript to add shortcut key to ```cmd_srv``` in current Finder window.
+* Support passing in a path to serve and traversing the file system.
+* Write applescript to add shortcut key (cmd + srv) to run ```cmd_srv``` in current Finder focused dir, including desktop.
+* Interpret php files cuz why not (currently just using php cli to interpret files, haven't fully tested yet).
 * Upload to rubygems.
-* Interpret php files cuz why not.
 
 ## Contributing
 
