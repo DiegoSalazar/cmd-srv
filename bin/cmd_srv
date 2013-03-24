@@ -15,4 +15,8 @@ page = "http://#{bind}:#{port}"
 puts "opening #{page}"
 system "open '#{page}'"
 
-t.join
+begin
+  t.join
+rescue Interrupt
+  puts "\rbye"
+end

@@ -9,16 +9,21 @@ Why not just open the file in directly in the browser you say? Sometimes stylesh
 that the browser can't find when opened this way. With ```cmd_srv``` I can quickly serve up the current directory as if it were the 
 document root.
 
+## What is it?
+
+A tiny little http server! Isn't that the cutest?! 
+
 ## Installation
 
-    $ [sudo] gem install cmd-srv
+    $ git clone git@github.com:DiegoSalazar/cmd-srv.git
+    $ [sudo] gem install cmd-srv/cmd-srv-0.0.1.gem 
 
 ## Usage
 
     $ cd into/dir/with/an/index.html
     $ cmd_srv
 
-Das iiit! A browser window will automatically open. You can optional pass in arguments to ```cmd_srv <bind> <port>``` where _bind_ is the IP or hostname to bind to and port is... well... the port.
+Das iiit! A browser window will automatically open. You can optionaly pass in arguments to ```cmd_srv <bind> <port>``` where _bind_ is the IP or hostname to bind to and _port_ is... well... the port.
 
 ## Todos
 
@@ -26,6 +31,7 @@ Das iiit! A browser window will automatically open. You can optional pass in arg
 * Support passing in a path to serve.
 * Auto directory listing when index file missing.
 * Write applescript to add shortcut key to ```cmd_srv``` in current Finder window.
+* Upload to rubygems.
 * Interpret php files cuz why not.
 
 ## Contributing
