@@ -27,6 +27,7 @@ Das iiit! A browser window will automatically open. You can optionaly pass in ar
 
 ## Todos
 
+* Fix changing dir context.
 * Write applescript to add shortcut key (cmd + srv) to run ```cmd_srv``` in current Finder focused dir, including desktop.
 * Interpret php files cuz why not (currently just using php cli to interpret files, haven't fully tested yet).
 * Write specs.

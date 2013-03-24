@@ -56,7 +56,7 @@ module CmdSrv
     private
     
     def parse(request)
-      request ? CGI.unescape(request.gsub(/GET\ /, '').gsub(/\ HTTP.*/, '').chomp) : ''
+      @request ? CGI.unescape(request.gsub(/GET\ /, '').gsub(/\ HTTP.*/, '').chomp) : ''
     end
     
     def index_file(dir = @orig_dir)
