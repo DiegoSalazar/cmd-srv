@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.version       = Cmd::Srv::VERSION
   gem.authors       = ["Diego Salazar"]
   gem.email         = ["diego@greyrobot.com"]
-  gem.description   = %q{Serve html files in working dir}
+  gem.description   = %q{A command line utility to quickly server static(ish) files from the current directory.}
   gem.summary       = %q{Serve html files in working dir}
   gem.homepage      = ""
 
