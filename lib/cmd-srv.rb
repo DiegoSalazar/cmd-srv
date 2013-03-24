@@ -65,8 +65,8 @@ module CmdSrv
       read_file file
     end
     
-    def dir_listing(dir = @orig_dir, of = '/*')
-      entries = Dir[File.join(dir, of)]
+    def dir_listing(dir = @orig_dir)
+      entries = Dir[File.join(dir, '/*')]
       
       html "Index of #{dir}" do
         tag 'ul' do
