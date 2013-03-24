@@ -1,22 +1,22 @@
 # Cmd::Srv
 
-A command line utility to quickly server static files from the current directory.
+A command line utility to quickly server static(ish) files from the current directory.
 
 ## Why
 
-I needed a quick way to see html files (site templates, designs, wireframes, etc.) without having to start up a Apache or something. 
-Why not just open the file in directly in the browser you say? Sometimes stylesheet links and scripts use a relative or other path 
+I needed a quick way to see html files (site templates, designs, wireframes, etc.) without having to start up Apache or something. 
+Why not just open the file directly in the browser you say? Sometimes stylesheet links and scripts use a relative or other path 
 that the browser can't find when opened this way. With ```cmd_srv``` I can quickly serve up the current directory as if it were the 
 document root.
 
 ## What is it?
 
-A tiny little http server! Isn't that the cutest?! It uses TCPServer to handle requests, MimeMagic for correct content-types in responses, and a tiny html builder for directory listings.
+A tiny little http server! Isn't that the cutest?! It uses TCPServer to handle requests, MimeMagic for correct content-types in responses, and a tiny html builder for listing directory contents when no index file is found.
 
 ## Installation
 
     $ git clone git@github.com:DiegoSalazar/cmd-srv.git
-    $ [sudo] gem install cmd-srv/cmd-srv-0.0.1.gem 
+    $ [sudo] gem install cmd-srv/cmd-srv-0.0.1.gem
 
 ## Usage
 
