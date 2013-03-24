@@ -20,7 +20,7 @@ A tiny little http server! Isn't that the cutest?! It uses TCPServer to handle r
 
 ## Usage
 
-    $ cd into/dir/with/an/index.html
+    $ cd into/any/dir/
     $ cmd_srv
 
 Das iiit! A browser window will automatically open. You can optionaly pass in arguments to ```cmd_srv <bind> <port>``` where _bind_ is the IP or hostname to bind to and _port_ is... well... the port.
