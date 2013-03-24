@@ -24,16 +24,13 @@ module CmdSrv
         begin
           # serving an asset: css, img, etc. from orig_dir
           if File.file? file = File.join(@orig_dir, @request.sub(@orig_dir, ''))
-            STDOUT.puts "File req: #{file}".inspect #debug
             mime = mime_of file
             response = read_file file
           else
             mime = 'text/html'
             if @request == '' # root dir
-              STDOUT.puts "Root req: #{@request}".inspect #debug
               response = index_file || dir_listing # find an index file or generate one
             elsif Dir.exists? @request # change dir
-              STDOUT.puts "Dir req: #{@request}".inspect #debug
               response = index_file(@request) || dir_listing(@request)
             end
           end
