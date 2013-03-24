@@ -1,6 +1,6 @@
 module CmdSrv
   module TinyHtmlBuilder
-    def html(title = "Index of #{Dir.pwd}")
+    def html(title = "Index of #{@cur_dir}")
       tag 'html' do
         tag('head') { tag 'title', title } +
         tag('body') do
