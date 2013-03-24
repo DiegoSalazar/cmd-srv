@@ -12,28 +12,29 @@ module CmdSrv
       @bind, @port = bind || '127.0.0.1', port || 7335
       super @bind, @port
       @orig_dir = Dir.pwd
-      @cur_dir = Dir.pwd
     end
 
     def start
-      log "Starting cmd_srv on http://#{@bind}:#{@port}"
+      log "Serving #{@orig_dir} on http://#{@bind}:#{@port}"
       
       while session = accept
-        request = parse session.gets
-        log request
-
+        @request = parse session.gets
+        log @request
+        
         begin
-          if File.file? request # serving an asset: css, img, etc.
-            @cur_dir = File.dirname request
-            mime = mime_of request
-            response = read_file request
+          # serving an asset: css, img, etc. from orig_dir
+          if File.file? file = File.join(@orig_dir, @request.sub(@orig_dir, ''))
+            STDOUT.puts "File req: #{file}".inspect #debug
+            mime = mime_of file
+            response = read_file file
           else
             mime = 'text/html'
-            if request == '/' # root dir
-              @cur_dir = @orig_dir.dup
+            if @request == '' # root dir
+              STDOUT.puts "Root req: #{@request}".inspect #debug
               response = index_file || dir_listing # find an index file or generate one
-            elsif Dir.exists? @cur_dir = File.expand_path(request) # change dir
-              response = index_file || dir_listing
+            elsif Dir.exists? @request # change dir
+              STDOUT.puts "Dir req: #{@request}".inspect #debug
+              response = index_file(@request) || dir_listing(@request)
             end
           end
           
@@ -41,9 +42,9 @@ module CmdSrv
           session.write response
         rescue Errno::ENOENT
           session.print "HTTP/1.1 404/NOT FOUND\r\nContent-type:text/html\r\n\r\n"
-          session.print "404 Not Found: #{request}"
-        rescue Errno::EPIPE => e
-          log e.message and exit
+          session.print "404 Not Found: #{@request}"
+        rescue Errno::ECONNRESET, Errno::EPIPE => e
+          log e.message
         ensure
           session.close
         end
@@ -58,23 +59,23 @@ module CmdSrv
     private
     
     def parse(request)
-      request ? CGI.unescape(request.gsub(/GET\ /, '').gsub(/\ HTTP.*/, '').chomp) : ''
+      @request ? CGI.unescape(request.gsub(/GET\ /, '').gsub(/\ HTTP.*/, '').chomp) : ''
     end
     
-    def index_file
-      file = Dir[File.join(@cur_dir, '/index*')].sort.first
+    def index_file(dir = @orig_dir)
+      file = Dir[File.join(dir, '/index*')].sort.first
       return unless file
       read_file file
     end
     
-    def dir_listing(of = '/*')
-      entries = Dir[File.join(@cur_dir, of)]
+    def dir_listing(dir = @orig_dir, of = '/*')
+      entries = Dir[File.join(dir, of)]
       
-      html do
+      html "Index of #{@request}" do
         tag 'ul' do
           entries.map do |entry|
             tag 'li' do
-              tag 'a', entry, :href => File.expand_path(entry, @cur_dir)
+              tag 'a', entry, :href => entry
             end
           end.join
         end
