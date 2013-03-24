@@ -11,7 +11,7 @@ document root.
 
 ## What is it?
 
-A tiny little http server! Isn't that the cutest?! It uses TCPServer to handle requests, MimeMagic for correct content-types in responses, and a tiny html builder for listing directory contents when no index file is found.
+A tiny little http server! Isn't that the cutest?! It uses TCPServer to handle requests, MimeMagic for correct content-types in responses, ```php``` command line to interpret php files, and a tiny html builder for listing directory contents when no index file is found.
 
 ## Installation
 
