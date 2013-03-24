@@ -71,7 +71,7 @@ module CmdSrv
     def dir_listing(dir = @orig_dir, of = '/*')
       entries = Dir[File.join(dir, of)]
       
-      html "Index of #{@request}" do
+      html "Index of #{dir}" do
         tag 'ul' do
           entries.map do |entry|
             tag 'li' do
